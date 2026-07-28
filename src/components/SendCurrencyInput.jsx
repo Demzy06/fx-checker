@@ -1,5 +1,5 @@
-import FlagPic from "../assets/images/flags/bg.webp";
-import ArrowDown from "../assets/images/icon-chevron-down.svg";
+import FlagPic from "../assets/images/flags/ar.webp";
+import ArrowDown from "../assets/icons/icon-chevron-down.svg";
 
 function SendCurrencyInput() {
   return (
