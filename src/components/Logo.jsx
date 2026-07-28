@@ -1,7 +1,7 @@
-import LogoImg from "../assets/images/logo.svg";
+import LogoImg from "../assets/icons/logo.svg";
 
 function Logo() {
-  return <img src={LogoImg} alt="" srcset="" />;
+  return <img src={LogoImg} alt="logo-pic" srcset="" />;
 }
 
 export default Logo;
