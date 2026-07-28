@@ -1,16 +1,16 @@
-import FlagPic from "../assets/images/flags/bg.webp";
-import ArrowDown from "../assets/images/icon-chevron-down.svg";
+import FlagPic from "../assets/images/flags/ar.webp";
+import ArrowDown from "../assets/icons/icon-chevron-down.svg";
 
 function ReceiveCurrency() {
   return (
     <div className="bg-[#202022] p-3 rounded-2xl border border-[#3D3D3D]">
       <h2 className="text-primary-gray uppercase text-[17px] font-medium">
-        Send
+        Receive
       </h2>
       <div className="mt-8 flex items-center">
-        <input
+        <output
           type="text"
-          placeholder="0.00"
+          value="-"
           className="w-full text-white font-bold text-[35px] placeholder:text-primary-gray outline-0"
         />
         <button className="w-38 ml-auto bg-[#333333] rounded-lg p-2.5 pl-2.5 pr-2.5 font-medium text-white flex items-center justify-between h-fit">
