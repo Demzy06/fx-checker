@@ -1,9 +1,9 @@
 function Button({ text, icon, onClick, styles }) {
   return (
-    <button className={styles}>
+    <button className={`${styles} flex items-center`}>
       {icon && (
-        <span>
-          <img src={icon} alt="icon" />
+        <span className="">
+          <img src={icon} alt="icon" className="w-5 mr-2" />
         </span>
       )}
       {text}
