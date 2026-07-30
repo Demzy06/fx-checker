@@ -6,10 +6,6 @@ import { getCurrencies, getExchangeRate } from "../api/CurrencyApi";
 const CurrencyListContext = createContext();
 
 function CurrencyListProvider({ children }) {
-  // const [sendCur, setSendCur] = useState("");
-  // const [receiveCur, setReceiveCur] = useState("");
-
-  // useEffect(function () {}, []);
   const [currencies, setCurrencies] = useState([]);
   const [currencyDisplay, setCurrencyDisplay] = useState(false);
   const [showCurrencyListReceive, setShowCurrencyListReceive] = useState(false);
