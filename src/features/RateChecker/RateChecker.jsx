@@ -2,7 +2,6 @@ import ReceiveCurrency from "../RateChecker/ReceiveCurrency";
 import SendCurrencyInput from "./SendCurrencyInput";
 import ExchangeIcon from "../../assets/icons/icon-exchange-vertical.svg";
 import ConversionAction from "../../components/ConversionAction";
-import { useCurrencyList } from "../../context/CurrencyListContext";
 
 function RateChecker() {
   return (
