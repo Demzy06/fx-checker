@@ -2,7 +2,6 @@ import FlagPic from "../../assets/images/flags/ar.webp";
 import ArrowDown from "../../assets/icons/icon-chevron-down.svg";
 import SelectCurrency from "./SelectCurrency";
 import { useCurrencyList } from "../../context/CurrencyListContext";
-import { useState } from "react";
 
 function SendCurrencyInput() {
   const {
@@ -11,10 +10,10 @@ function SendCurrencyInput() {
     setShowCurrencyListSend,
     showCurrencyListReceive,
     setShowCurrencyListReceive,
-    setFromCurrency,
-    fromCurrency,
-    fromCurrencyValue,
-    setFromCurrencyValue,
+    setBaseCurrency,
+    baseCurrency,
+    baseCurrencyValue,
+    setBaseCurrencyValue,
   } = useCurrencyList();
 
   return (
@@ -24,8 +23,8 @@ function SendCurrencyInput() {
       </h2>
       <div className="mt-8 flex items-center">
         <input
-          value={fromCurrencyValue}
-          onChange={(e) => setFromCurrencyValue(e.target.value)}
+          value={baseCurrencyValue}
+          onChange={(e) => setBaseCurrencyValue(e.target.value)}
           type="text"
           placeholder="0.00"
           className="w-full text-white font-bold text-[35px] placeholder:text-primary-gray outline-0"
@@ -42,13 +41,13 @@ function SendCurrencyInput() {
           <span className="h-fit w-5 inline-block">
             {/* <img src={FlagPic} alt="" className="w-full rounded-full" /> */}
           </span>
-          <span className="inline-block text-[14px]">{fromCurrency}</span>
+          <span className="inline-block text-[14px]">{baseCurrency}</span>
           <span className="inline-block ">
             <img src={ArrowDown} alt="" />
           </span>
         </button>
         <SelectCurrency
-          selectCurrency={setFromCurrency}
+          selectCurrency={setBaseCurrency}
           styles={`${showCurrencyListSend ? "" : "hidden"} bottom-23`}
         />
       </div>
