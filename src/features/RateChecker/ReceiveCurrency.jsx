@@ -13,8 +13,8 @@ function ReceiveCurrency() {
     setShowCurrencyListReceive,
     showCurrencyListSend,
     setShowCurrencyListSend,
-    setToCurrency,
-    toCurrency,
+    setQuoteCurrency,
+    quoteCurrency,
     convertedRate,
   } = useCurrencyList();
   return (
@@ -40,13 +40,13 @@ function ReceiveCurrency() {
           <span className="h-fit w-6 inline-block">
             {/* <img src={FlagPic} alt="" className="w-full rounded-full" /> */}
           </span>
-          <span className="inline-block">{toCurrency}</span>
+          <span className="inline-block">{quoteCurrency}</span>
           <span className="inline-block ">
             <img src={ArrowDown} alt="" />
           </span>
         </button>
         <SelectCurrency
-          selectCurrency={setToCurrency}
+          selectCurrency={setQuoteCurrency}
           styles={`${showCurrencyListReceive ? "" : "hidden"} -bottom-29`}
         />
       </div>
