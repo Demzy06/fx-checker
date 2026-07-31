@@ -1,5 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from "react";
+import { getExchangeHistory } from "../api/CurrencyApi";
+import { useCurrencyList } from "./CurrencyListContext";
 const HistoryContext = createContext();
 
 const dateRangeOption = [
@@ -12,8 +14,10 @@ const dateRangeOption = [
 ];
 
 function HistoryContextProvider({ children }) {
+  const { baseCurrency, quoteCurrency } = useCurrencyList();
   const [dateSeleted, setDateSelected] = useState(dateRangeOption[0]);
   const [date, setDate] = useState();
+  const [currencyPairHistory, setCurrencyPairHistory] = useState({});
 
   useEffect(
     function () {
@@ -34,7 +38,17 @@ function HistoryContextProvider({ children }) {
     [dateSeleted.days],
   );
 
-  useEffect(function name() {}, []);
+  useEffect(
+    function name() {
+      getExchangeHistory(
+        baseCurrency,
+        quoteCurrency,
+        date,
+        setCurrencyPairHistory,
+      );
+    },
+    [baseCurrency, quoteCurrency, date],
+  );
 
   return (
     <HistoryContext.Provider
@@ -44,6 +58,7 @@ function HistoryContextProvider({ children }) {
         date,
         setDate,
         dateRangeOption,
+        currencyPairHistory,
       }}
     >
       {children}
