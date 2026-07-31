@@ -11,31 +11,19 @@ function CurrencyListProvider({ children }) {
   const [showCurrencyListReceive, setShowCurrencyListReceive] = useState(false);
   const [showCurrencyListSend, setShowCurrencyListSend] = useState(false);
 
-  const [fromCurrency, setFromCurrency] = useState("EUR");
-  const [toCurrency, setToCurrency] = useState("USD");
+  const [baseCurrency, setBaseCurrency] = useState("EUR");
+  const [quoteCurrency, setQuoteCurrency] = useState("USD");
 
-  const [fromCurrencyValue, setFromCurrencyValue] = useState("");
+  const [baseCurrencyValue, setBaseCurrencyValue] = useState("");
 
   const [rateObj, setRateObj] = useState({});
 
   console.log(rateObj);
-  const convertedRate = +fromCurrencyValue * rateObj?.rate;
+  const convertedRate = +baseCurrencyValue * rateObj?.rate;
   console.log(convertedRate);
 
   useEffect(
     function () {
-      // if (currencies !== "") return;
-      // async function FecthCurrencies() {
-      //   try {
-      //     const res = await fetch("https://api.frankfurter.dev/v2/currencies");
-      //     const data = await res.json();
-      //     setCurrencies(data);
-      //     console.log(data);
-      //   } catch (error) {
-      //     console.log(error);
-      //   }
-      // }
-
       currencyDisplay && getCurrencies(setCurrencies, "currencies");
     },
     [currencyDisplay],
@@ -43,9 +31,9 @@ function CurrencyListProvider({ children }) {
 
   useEffect(
     function name() {
-      getExchangeRate("rate", fromCurrency, toCurrency, setRateObj);
+      getExchangeRate("rate", baseCurrency, quoteCurrency, setRateObj);
     },
-    [fromCurrency, toCurrency],
+    [baseCurrency, quoteCurrency],
   );
 
   console.log(currencies);
@@ -60,12 +48,12 @@ function CurrencyListProvider({ children }) {
         setShowCurrencyListSend,
         showCurrencyListReceive,
         setShowCurrencyListReceive,
-        fromCurrency,
-        setFromCurrency,
-        toCurrency,
-        setToCurrency,
-        fromCurrencyValue,
-        setFromCurrencyValue,
+        baseCurrency,
+        setBaseCurrency,
+        quoteCurrency,
+        setQuoteCurrency,
+        baseCurrencyValue,
+        setBaseCurrencyValue,
         convertedRate,
         rateObj,
       }}
