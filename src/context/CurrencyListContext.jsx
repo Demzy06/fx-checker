@@ -14,6 +14,14 @@ function CurrencyListProvider({ children }) {
   const [fromCurrency, setFromCurrency] = useState("EUR");
   const [toCurrency, setToCurrency] = useState("USD");
 
+  const [fromCurrencyValue, setFromCurrencyValue] = useState("");
+
+  const [rateObj, setRateObj] = useState({});
+
+  console.log(rateObj);
+  const convertedRate = +fromCurrencyValue * rateObj?.rate;
+  console.log(convertedRate);
+
   useEffect(
     function () {
       // if (currencies !== "") return;
@@ -35,7 +43,7 @@ function CurrencyListProvider({ children }) {
 
   useEffect(
     function name() {
-      getExchangeRate("rate", fromCurrency, toCurrency);
+      getExchangeRate("rate", fromCurrency, toCurrency, setRateObj);
     },
     [fromCurrency, toCurrency],
   );
@@ -56,6 +64,10 @@ function CurrencyListProvider({ children }) {
         setFromCurrency,
         toCurrency,
         setToCurrency,
+        fromCurrencyValue,
+        setFromCurrencyValue,
+        convertedRate,
+        rateObj,
       }}
     >
       {children}
