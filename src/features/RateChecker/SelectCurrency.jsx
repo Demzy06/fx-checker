@@ -2,7 +2,7 @@ import { useCurrencyList } from "../../context/CurrencyListContext";
 
 function SelectCurrency({ styles, selectCurrency }) {
   const { currencies } = useCurrencyList();
-  console.log(currencies);
+  // console.log(currencies);
   return (
     <div
       className={`bg-secondary-gray p-2 border border-[#585858] rounded-lg hidde absolute left-4  w-[85%] h-70 overflow-y-auto ${styles}`}
