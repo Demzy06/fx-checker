@@ -14,6 +14,8 @@ function ReceiveCurrency() {
     showCurrencyListSend,
     setShowCurrencyListSend,
     setToCurrency,
+    toCurrency,
+    convertedRate,
   } = useCurrencyList();
   return (
     <div className="bg-secondary-gray p-3 rounded-2xl border border-light-gray">
@@ -21,12 +23,12 @@ function ReceiveCurrency() {
         Receive
       </h2>
       <div className="mt-8 flex items-center">
-        {/* <span>1,000</span> */}
-        <output
-          type="text"
-          value="-"
-          className="w-full text-white font-bold text-[35px] placeholder:text-primary-gray outline-0"
-        />
+        {/* <span className="font-bold text-[35px] text-primary-yellow">
+          1,0000
+        </span> */}
+        <output className="w-[80%] text-primary-yellow font-bold text-[35px]">
+          {convertedRate.toFixed(2)}
+        </output>
         <button
           onClick={() => {
             setCurrencyDisplay((displayed) => !displayed);
@@ -36,9 +38,9 @@ function ReceiveCurrency() {
           className="w-38 ml-auto bg-[#333333] rounded-lg p-2.5 pl-2.5 pr-2.5 font-medium text-white flex items-center justify-between h-fit"
         >
           <span className="h-fit w-6 inline-block">
-            <img src={FlagPic} alt="" className="w-full rounded-full" />
+            {/* <img src={FlagPic} alt="" className="w-full rounded-full" /> */}
           </span>
-          <span className="inline-block">EUR</span>
+          <span className="inline-block">{toCurrency}</span>
           <span className="inline-block ">
             <img src={ArrowDown} alt="" />
           </span>
