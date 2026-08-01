@@ -9,6 +9,7 @@ import { useCurrencyList } from "../../context/CurrencyListContext";
 function ReceiveCurrency() {
   const {
     setCurrencyDisplay,
+
     showCurrencyListReceive,
     setShowCurrencyListReceive,
     showCurrencyListSend,
@@ -31,7 +32,7 @@ function ReceiveCurrency() {
         </output>
         <button
           onClick={() => {
-            setCurrencyDisplay((displayed) => !displayed);
+            // setCurrencyDisplay((displayed) => !displayed);
             setShowCurrencyListReceive((show) => !show);
             if (showCurrencyListSend === true) setShowCurrencyListSend(false);
           }}
@@ -47,7 +48,8 @@ function ReceiveCurrency() {
         </button>
         <SelectCurrency
           selectCurrency={setQuoteCurrency}
-          styles={`${showCurrencyListReceive ? "" : "hidden"} -bottom-29`}
+          show={setShowCurrencyListReceive}
+          styles={`${showCurrencyListReceive ? "" : "hidden"} -bottom-29 `}
         />
       </div>
     </div>
