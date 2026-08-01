@@ -5,6 +5,7 @@ import Tab from "./components/Tab";
 import TabDetailChecker from "./components/TabDetailChecker";
 import { CurrencyListProvider } from "./context/CurrencyListContext";
 import { HistoryContextProvider } from "./context/HistoryContext";
+import { TabContextProvider } from "./context/TabContext";
 
 function App() {
   return (
@@ -15,8 +16,10 @@ function App() {
           <CurrencyPreview />
           <main className="pl-4 pr-4">
             <RateChecker />
-            <Tab />
-            <TabDetailChecker />
+            <TabContextProvider>
+              <Tab />
+              <TabDetailChecker />
+            </TabContextProvider>
           </main>
         </div>
       </HistoryContextProvider>
