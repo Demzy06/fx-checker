@@ -12,7 +12,7 @@ function History() {
   return (
     <section>
       <div className="grid grid-cols-2 gap-3">
-        <PreviewTab text="Open" data={startRate?.rate} />
+        <PreviewTab text="Open" data={open} />
         <PreviewTab text="Last" data={endRate?.rate} />
         <PreviewTab text="Change" data={change.toFixed(4)} />
         <PreviewTab text="% Change" data={change.toFixed(4)} />
