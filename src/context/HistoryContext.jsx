@@ -16,7 +16,7 @@ const dateRangeOption = [
 function HistoryContextProvider({ children }) {
   const { baseCurrency, quoteCurrency } = useCurrencyList();
   const [dateSeleted, setDateSelected] = useState(dateRangeOption[0]);
-  const [date, setDate] = useState();
+  const [date, setDate] = useState("");
   const [currencyPairHistory, setCurrencyPairHistory] = useState({});
 
   useEffect(
@@ -40,6 +40,7 @@ function HistoryContextProvider({ children }) {
 
   useEffect(
     function name() {
+      if (date === "") return;
       getExchangeHistory(
         baseCurrency,
         quoteCurrency,
