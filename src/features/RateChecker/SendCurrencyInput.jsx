@@ -48,6 +48,7 @@ function SendCurrencyInput() {
         </button>
         <SelectCurrency
           selectCurrency={setBaseCurrency}
+          show={setShowCurrencyListSend}
           styles={`${showCurrencyListSend ? "" : "hidden"} bottom-23`}
         />
       </div>
