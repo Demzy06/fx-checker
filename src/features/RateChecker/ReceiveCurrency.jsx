@@ -9,7 +9,6 @@ import { useCurrencyList } from "../../context/CurrencyListContext";
 function ReceiveCurrency() {
   const {
     setCurrencyDisplay,
-
     showCurrencyListReceive,
     setShowCurrencyListReceive,
     showCurrencyListSend,
