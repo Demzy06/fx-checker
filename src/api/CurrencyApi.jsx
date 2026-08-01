@@ -11,12 +11,28 @@ export async function getCurrencies(setterFtn, target) {
   }
 }
 
-export async function getExchangeRate(target, base, quote) {
+export async function getExchangeRate(target, base, quote, setterFtn) {
   try {
     const res = await fetch(`${BASE_URL}/${target}/${base}/${quote}`);
     const data = await res.json();
+    setterFtn(data);
     console.log(data);
   } catch (error) {
     console.log(error);
   }
 }
+
+export async function getExchangeHistory(base, quote, date, setterFtn) {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/rates?base=${base}&quotes=${quote}&from=${date}`,
+    );
+    const data = await res.json();
+    setterFtn(data);
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// https://api.frankfurter.dev/v2/rates?base=NGN&quotes=ARS&from=2026-07-01
