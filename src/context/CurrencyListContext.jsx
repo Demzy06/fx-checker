@@ -18,6 +18,8 @@ function CurrencyListProvider({ children }) {
 
   const [rateObj, setRateObj] = useState({});
 
+  const [favorites, setFavorites] = useState([]);
+
   console.log(rateObj);
   const convertedRate = +baseCurrencyValue * rateObj?.rate;
   console.log(convertedRate);
@@ -56,6 +58,8 @@ function CurrencyListProvider({ children }) {
         setBaseCurrencyValue,
         convertedRate,
         rateObj,
+        favorites,
+        setFavorites,
       }}
     >
       {children}
