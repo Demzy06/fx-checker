@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTabContext } from "../context/TabContext";
 
-const tabs = ["History", "Compare", "Favorite", "Log"];
+const tabs = ["History", "Compare", "Favorites", "Logs"];
 
 function Tab() {
   const { setSelectedTab, selectedTab } = useTabContext();
