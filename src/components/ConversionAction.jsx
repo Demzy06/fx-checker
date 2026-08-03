@@ -3,7 +3,9 @@ import StarIcon from "../assets/icons/icon-star.svg";
 import { useCurrencyList } from "../context/CurrencyListContext";
 
 function ConversionAction() {
-  const { baseCurrency, quoteCurrency, rateObj } = useCurrencyList();
+  const { baseCurrency, quoteCurrency, rateObj, addToFavorites, addToLogs } =
+    useCurrencyList();
+
   return (
     <div className="border-dashed border-light-gray pt-6 ">
       <p className="text-center text-white">
@@ -14,10 +16,12 @@ function ConversionAction() {
           text="Favorite"
           styles="uppercase p-1 pr-3 pl-3 bg-primary-yellow text-[14px] rounded-lg "
           icon={StarIcon}
+          onClick={addToFavorites}
         />
         <Button
           text="Log Conversion"
           styles="uppercase p-1 pl-2 pr-2 border border-primary-yellow rounded-lg text-white"
+          onClick={addToLogs}
         />
       </span>
     </div>
