@@ -24,7 +24,7 @@ function SendCurrencyInput() {
       <div className="mt-8 flex items-center">
         <input
           value={baseCurrencyValue}
-          onChange={(e) => setBaseCurrencyValue(e.target.value)}
+          onChange={(e) => setBaseCurrencyValue(Number(e.target.value))}
           type="text"
           placeholder="0.00"
           className="w-full text-white font-bold text-[35px] placeholder:text-primary-gray outline-0"
