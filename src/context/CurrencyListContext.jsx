@@ -14,15 +14,16 @@ function CurrencyListProvider({ children }) {
   const [baseCurrency, setBaseCurrency] = useState("EUR");
   const [quoteCurrency, setQuoteCurrency] = useState("USD");
 
-  const [baseCurrencyValue, setBaseCurrencyValue] = useState("");
+  const [baseCurrencyValue, setBaseCurrencyValue] = useState(0);
 
   const [rateObj, setRateObj] = useState({});
 
   const [favorites, setFavorites] = useState([]);
 
   const [logs, setLogs] = useState([]);
+  const [isCurrPairInFav, setIsCurrPairInFav] = useState(false);
 
-  const convertedRate = +baseCurrencyValue * rateObj?.rate;
+  const convertedRate = +baseCurrencyValue * +rateObj?.rate;
   console.log(rateObj);
   console.log(convertedRate);
 
@@ -35,6 +36,16 @@ function CurrencyListProvider({ children }) {
 
       // percentageChange,
     };
+
+    if (
+      favorites.some(
+        (favorite) =>
+          currencyPairFav.baseCurrency === favorite.baseCurrency &&
+          currencyPairFav.quoteCurrency === favorite.quoteCurrency,
+      )
+    )
+      return;
+
     setFavorites((favorites) => [...favorites, currencyPairFav]);
   }
 
@@ -46,7 +57,6 @@ function CurrencyListProvider({ children }) {
       baseCurrencyValue,
       id: crypto.randomUUID(),
     };
-
     setLogs((logs) => [...logs, currLog]);
   }
 
@@ -60,13 +70,21 @@ function CurrencyListProvider({ children }) {
     );
   }
 
-  // function favPairChecker() {
-  //   if (
-  //     favorites.includes(currencyPairFav.baseCurrency)
-  //     // favorites.includes(currencyPairFav.quoteCurrency)
-  //   )
-  //     console.log("xo");
-  // }
+  useEffect(
+    function () {
+      function favPairChecker() {
+        favorites.some(
+          (favorite) =>
+            baseCurrency === favorite.baseCurrency &&
+            quoteCurrency === favorite.quoteCurrency,
+        )
+          ? setIsCurrPairInFav(true)
+          : setIsCurrPairInFav(false);
+      }
+      favPairChecker();
+    },
+    [baseCurrency, quoteCurrency, favorites],
+  );
 
   useEffect(
     function () {
@@ -110,6 +128,7 @@ function CurrencyListProvider({ children }) {
         deleteLog,
         addToFavorites,
         removeFavorite,
+        isCurrPairInFav,
       }}
     >
       {children}
