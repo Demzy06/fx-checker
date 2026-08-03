@@ -36,7 +36,7 @@ function SendCurrencyInput() {
             if (showCurrencyListReceive === true)
               setShowCurrencyListReceive(false);
           }}
-          className="w-31 ml-auto bg-[#2E2E2E] rounded-lg p-2.5 pl-2.5 pr-2.5 font-medium text-white flex items-center justify-between h-fit border border-light-gray"
+          className="w-31 ml-auto bg-lightbg-gray rounded-lg p-2.5 pl-2.5 pr-2.5 font-medium text-white flex items-center justify-between h-fit border border-light-gray"
         >
           <span className="h-fit w-5 inline-block">
             {/* <img src={FlagPic} alt="" className="w-full rounded-full" /> */}
