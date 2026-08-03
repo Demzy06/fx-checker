@@ -20,9 +20,53 @@ function CurrencyListProvider({ children }) {
 
   const [favorites, setFavorites] = useState([]);
 
-  console.log(rateObj);
+  const [logs, setLogs] = useState([]);
+
   const convertedRate = +baseCurrencyValue * rateObj?.rate;
+  console.log(rateObj);
   console.log(convertedRate);
+
+  function addToFavorites() {
+    const currencyPairFav = {
+      baseCurrency,
+      quoteCurrency,
+      rate: rateObj.rate,
+      id: crypto.randomUUID(),
+
+      // percentageChange,
+    };
+    setFavorites((favorites) => [...favorites, currencyPairFav]);
+  }
+
+  function addToLogs() {
+    const currLog = {
+      baseCurrency,
+      quoteCurrency,
+      convertedRate,
+      baseCurrencyValue,
+      id: crypto.randomUUID(),
+    };
+
+    setLogs((logs) => [...logs, currLog]);
+  }
+
+  function deleteLog(selectedLog) {
+    setLogs(logs.filter((log) => log.id !== selectedLog.id));
+  }
+
+  function removeFavorite(selectedFav) {
+    setFavorites(
+      favorites.filter((favorite) => favorite.id !== selectedFav.id),
+    );
+  }
+
+  // function favPairChecker() {
+  //   if (
+  //     favorites.includes(currencyPairFav.baseCurrency)
+  //     // favorites.includes(currencyPairFav.quoteCurrency)
+  //   )
+  //     console.log("xo");
+  // }
 
   useEffect(
     function () {
@@ -60,6 +104,12 @@ function CurrencyListProvider({ children }) {
         rateObj,
         favorites,
         setFavorites,
+        logs,
+        setLogs,
+        addToLogs,
+        deleteLog,
+        addToFavorites,
+        removeFavorite,
       }}
     >
       {children}
