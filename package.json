@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "lightweight-charts": "^5.2.0",
     "react": "^19.2.7",
+    "react-country-flag": "^3.1.0",
     "react-dom": "^19.2.7",
+    "recharts": "^3.10.1",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
