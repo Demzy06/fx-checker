@@ -37,19 +37,19 @@ function CurrencyListProvider({ children }) {
       // percentageChange,
     };
 
-    if (
-      favorites.some(
-        (favorite) =>
-          currencyPairFav.baseCurrency === favorite.baseCurrency &&
-          currencyPairFav.quoteCurrency === favorite.quoteCurrency,
-      )
-    )
-      return;
+    const found = favorites.find(
+      (favorite) =>
+        currencyPairFav.baseCurrency === favorite.baseCurrency &&
+        currencyPairFav.quoteCurrency === favorite.quoteCurrency,
+    );
 
-    setFavorites((favorites) => [...favorites, currencyPairFav]);
+    found
+      ? setFavorites(favorites.filter((favorite) => favorite.id !== found.id))
+      : setFavorites((favorites) => [...favorites, currencyPairFav]);
   }
 
   function addToLogs() {
+    if (baseCurrencyValue <= 0) return;
     const currLog = {
       baseCurrency,
       quoteCurrency,
@@ -62,6 +62,10 @@ function CurrencyListProvider({ children }) {
 
   function deleteLog(selectedLog) {
     setLogs(logs.filter((log) => log.id !== selectedLog.id));
+  }
+
+  function clearLogs() {
+    setLogs([]);
   }
 
   function removeFavorite(selectedFav) {
@@ -129,6 +133,7 @@ function CurrencyListProvider({ children }) {
         addToFavorites,
         removeFavorite,
         isCurrPairInFav,
+        clearLogs,
       }}
     >
       {children}
