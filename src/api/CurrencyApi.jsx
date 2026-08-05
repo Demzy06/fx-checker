@@ -1,4 +1,5 @@
 const BASE_URL = "https://api.frankfurter.dev/v2";
+import { useTabContext } from "../context/TabContext";
 
 export async function getCurrencies(setterFtn, target) {
   try {
@@ -34,19 +35,3 @@ export async function getExchangeHistory(base, quote, date, setterFtn) {
     console.log(error);
   }
 }
-
-// if (latestCurrenciesRate !== "") return;
-export async function getLatestRates(base, setterFtn) {
-  try {
-    const res = await fetch(
-      ` https://api.frankfurter.dev/v1/latest?base=${base} `,
-    );
-    const data = await res.json();
-    setterFtn(data);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-getLatestRates();
-// https://api.frankfurter.dev/v2/rates?base=NGN&quotes=ARS&from=2026-07-01
