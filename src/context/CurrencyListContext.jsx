@@ -104,7 +104,6 @@ function CurrencyListProvider({ children }) {
     [baseCurrency, quoteCurrency],
   );
 
-  console.log(currencies);
   return (
     <CurrencyListContext.Provider
       value={{
