@@ -1,3 +1,5 @@
+import Chart from "./Chart";
+
 function HistoryChart() {
   return (
     <div className="bg-deep-gray rounded-xl pl-5 pr-5 p-4 mb-10 border border-[#2E2E2E]">
@@ -8,7 +10,9 @@ function HistoryChart() {
           <li className="uppercase list-disc">May 14 16:00 CET</li>
         </ul>
       </div>
-      <div className="xoo chart-div h-70"></div>
+      <div className="xoo chart-div h-fit">
+        <Chart />
+      </div>
     </div>
   );
 }
