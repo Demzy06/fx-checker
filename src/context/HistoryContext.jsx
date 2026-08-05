@@ -5,25 +5,25 @@ import { useCurrencyList } from "./CurrencyListContext";
 const HistoryContext = createContext();
 
 const dateRangeOption = [
-  { option: 1, days: 1 },
-  { option: 2, days: 7 },
-  { option: 3, days: 30 },
-  { option: 4, days: 90 },
-  { option: 5, days: 365 },
-  { option: 6, days: 1825 },
+  { option: 1, days: 1, range: "1D" },
+  { option: 2, days: 7, range: "1W" },
+  { option: 3, days: 30, range: "1M" },
+  { option: 4, days: 90, range: "3M" },
+  { option: 5, days: 365, range: "1Y" },
+  { option: 6, days: 1825, range: "5Y" },
 ];
 
 function HistoryContextProvider({ children }) {
   const { baseCurrency, quoteCurrency } = useCurrencyList();
-  const [dateSeleted, setDateSelected] = useState(dateRangeOption[0]);
+  const [dateSelected, setDateSelected] = useState(dateRangeOption[0]);
   const [date, setDate] = useState("");
-  const [currencyPairHistory, setCurrencyPairHistory] = useState({});
+  const [currencyPairHistory, setCurrencyPairHistory] = useState([]);
 
   useEffect(
     function () {
       function getDate() {
         const calcTimeStamp =
-          Math.floor(Date.now() / 1000) - dateSeleted.days * 24 * 60 * 60;
+          Math.floor(Date.now() / 1000) - dateSelected.days * 24 * 60 * 60;
         const date = new Date(calcTimeStamp * 1000);
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
@@ -35,7 +35,7 @@ function HistoryContextProvider({ children }) {
       }
       getDate();
     },
-    [dateSeleted.days],
+    [dateSelected.days],
   );
 
   useEffect(
@@ -54,7 +54,7 @@ function HistoryContextProvider({ children }) {
   return (
     <HistoryContext.Provider
       value={{
-        dateSeleted,
+        dateSelected,
         setDateSelected,
         date,
         setDate,
