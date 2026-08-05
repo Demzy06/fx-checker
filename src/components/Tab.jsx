@@ -7,7 +7,7 @@ function Tab() {
   const { setSelectedTab, selectedTab } = useTabContext();
   const [tabIsOpen, setTabIsOpen] = useState(false);
   return (
-    <div className="mb-10 mt-10">
+    <div className="mb-5 mt-10">
       <div
         className="border border-light-gray p-2  rounded-lg bg-deep-gray"
         onClick={() => setTabIsOpen((isOpen) => !isOpen)}
