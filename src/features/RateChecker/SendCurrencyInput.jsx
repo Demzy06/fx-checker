@@ -1,9 +1,15 @@
-import FlagPic from "../../assets/images/flags/ar.webp";
+// import FlagPic from "../../assets/images/flags/ar.webp";
 import ArrowDown from "../../assets/icons/icon-chevron-down.svg";
 import SelectCurrency from "./SelectCurrency";
 import { useCurrencyList } from "../../context/CurrencyListContext";
+import { currencyToCountry } from "../../data/currencies";
+import ReactCountryFlag from "react-country-flag";
+import { useState } from "react";
 
 function SendCurrencyInput() {
+  // Created this state to store seleted currency, so flag can be displayed in the btn
+  const [clickedCurr, setClickedCurr] = useState("EUR");
+
   const {
     setCurrencyDisplay,
     showCurrencyListSend,
@@ -38,8 +44,18 @@ function SendCurrencyInput() {
           }}
           className="w-31 ml-auto bg-lightbg-gray rounded-lg p-2.5 pl-2.5 pr-2.5 font-medium text-white flex items-center justify-between h-fit border border-light-gray"
         >
-          <span className="h-fit w-5 inline-block">
+          <span className="h-fit w-6 inline-block">
             {/* <img src={FlagPic} alt="" className="w-full rounded-full" /> */}
+            <ReactCountryFlag
+              countryCode={currencyToCountry[clickedCurr]}
+              svg
+              style={{
+                width: "20px",
+                height: "20px",
+                borderRadius: "50%",
+                objectFit: "cover",
+              }}
+            />
           </span>
           <span className="inline-block text-[14px]">{baseCurrency}</span>
           <span className="inline-block ">
@@ -50,6 +66,7 @@ function SendCurrencyInput() {
           selectCurrency={setBaseCurrency}
           show={setShowCurrencyListSend}
           styles={`${showCurrencyListSend ? "" : "hidden"} bottom-23`}
+          setClickedCurr={setClickedCurr}
         />
       </div>
     </div>
