@@ -10,7 +10,7 @@ function HistoryChart() {
           <li className="uppercase list-disc">May 14 16:00 CET</li>
         </ul>
       </div>
-      <div className="xoo chart-div h-fit">
+      <div className="h-fit">
         <Chart />
       </div>
     </div>
