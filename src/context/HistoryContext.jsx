@@ -17,6 +17,8 @@ function HistoryContextProvider({ children }) {
   const [dateSelected, setDateSelected] = useState(dateRangeOption[0]);
   const [date, setDate] = useState("");
   const [currencyPairHistory, setCurrencyPairHistory] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(
     function () {
@@ -45,6 +47,8 @@ function HistoryContextProvider({ children }) {
         quoteCurrency,
         date,
         setCurrencyPairHistory,
+        setIsLoading,
+        setError,
       );
     },
     [baseCurrency, quoteCurrency, date],
@@ -59,6 +63,8 @@ function HistoryContextProvider({ children }) {
         setDate,
         dateRangeOption,
         currencyPairHistory,
+        isLoading,
+        error,
       }}
     >
       {children}
