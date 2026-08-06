@@ -25,6 +25,7 @@ function CurrencyListProvider({ children }) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+
   const convertedRate = +baseCurrencyValue * +rateObj?.rate;
   console.log(rateObj);
   console.log(convertedRate);
@@ -74,6 +75,11 @@ function CurrencyListProvider({ children }) {
     setFavorites(
       favorites.filter((favorite) => favorite.id !== selectedFav.id),
     );
+  }
+
+  function switchCurrencyPair() {
+    setBaseCurrency(quoteCurrency);
+    setQuoteCurrency(baseCurrency);
   }
 
   useEffect(
@@ -143,6 +149,7 @@ function CurrencyListProvider({ children }) {
         removeFavorite,
         isCurrPairInFav,
         clearLogs,
+        switchCurrencyPair,
       }}
     >
       {children}
