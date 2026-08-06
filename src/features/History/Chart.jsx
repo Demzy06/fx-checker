@@ -8,14 +8,30 @@ import {
   Tooltip,
 } from "recharts";
 import { useHistory } from "../../context/HistoryContext";
-
+import { useCurrencyList } from "../../context/CurrencyListContext";
+import LoadingMessage from "../../components/LoadingMessage";
+import Message from "../../components/Message";
 function Chart() {
-  const { currencyPairHistory } = useHistory();
+  const { baseCurrency, quoteCurrency } = useCurrencyList();
+  const { currencyPairHistory, isLoading, error } = useHistory();
 
   const history = currencyPairHistory.map((curHistory) => {
     return { date: curHistory.date, rate: curHistory.rate };
   });
   console.log(history, currencyPairHistory);
+
+  if (isLoading) {
+    return <LoadingMessage message="Loading history rates..." />;
+  }
+
+  if (error) {
+    return (
+      <Message
+        message="No chart data available"
+        messageTwo={`We couldn't load rate history for ${baseCurrency}/${quoteCurrency} right now. This usually clears up in a minute, if it doesn't reload page`}
+      />
+    );
+  }
 
   return (
     <div className="bg-deep-gray rounded  mt-1 pl-2 pr-2">
