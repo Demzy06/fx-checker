@@ -2,7 +2,7 @@ import { useCurrencyList } from "../../context/CurrencyListContext";
 import ReactCountryFlag from "react-country-flag";
 import { currencyToCountry } from "../../data/currencies";
 
-function SelectCurrency({ styles, selectCurrency, show, setClickedCurr }) {
+function SelectCurrency({ styles, selectCurrency, show }) {
   const { currencies } = useCurrencyList();
 
   return (
@@ -25,7 +25,6 @@ function SelectCurrency({ styles, selectCurrency, show, setClickedCurr }) {
               onClick={() => {
                 selectCurrency(currency.iso_code);
                 show((displayed) => !displayed);
-                setClickedCurr(currency.iso_code);
               }}
               className="pr-1 pl-1 p-2 text-white flex items-center"
             >
