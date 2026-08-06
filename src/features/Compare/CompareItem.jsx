@@ -35,7 +35,9 @@ export default function CompareItem({ rate }) {
       </div>
       <div className="flex items-center">
         <span className="mr-3 text-end">
-          <p className="text-white text-[14px]">{conversion.toFixed(2)}</p>
+          <p className="text-white text-[14px]">
+            {!conversion ? "-" : conversion.toFixed(2)}
+          </p>
           <p className="text-primary-gray text-[12px]">@ {rate[1]}</p>
         </span>
         <button className="border border-light-gray rounded-lg h-fit p-2 pl-2 pr-2 ">
