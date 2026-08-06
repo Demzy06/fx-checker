@@ -19,6 +19,7 @@ function ReceiveCurrency() {
     quoteCurrency,
     convertedRate,
   } = useCurrencyList();
+  console.log(convertedRate);
   return (
     <div className="bg-secondary-gray p-3 rounded-2xl border border-light-gray">
       <h2 className="text-primary-gray uppercase text-[17px] font-medium">
@@ -26,9 +27,13 @@ function ReceiveCurrency() {
       </h2>
       <div className="mt-8 flex items-center">
         {/* Show conversion */}
-        <output className="w-full text-primary-yellow font-bold text-[35px]">
-          {convertedRate.toFixed(2)}
-        </output>
+        <span className="truncate w-[60%] text-primary-yellow font-bold text-[35px]">
+          {!convertedRate
+            ? "-"
+            : new Intl.NumberFormat("en-US", {
+                currency: "USD",
+              }).format(convertedRate.toFixed(2))}
+        </span>
         <button
           onClick={() => {
             setCurrencyDisplay((displayed) => !displayed);
