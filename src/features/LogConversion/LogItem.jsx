@@ -19,10 +19,10 @@ function LogItem({ logObj }) {
 
       <div className="flex items-center">
         <span className="mr-3 text-end flex">
-          <p className="text-primary-gray font-medium text-[14px] mr-4">
+          <p className="text-primary-gray font-medium text-[14px] mr-4 truncate w-15">
             {logObj.baseCurrencyValue}
           </p>
-          <p className="text-primary-yellow font-medium text-[14px]">
+          <p className="text-primary-yellow font-medium text-[14px] truncate w-15">
             {logObj.convertedRate.toFixed(2)}
           </p>
         </span>
