@@ -14,7 +14,7 @@ function CurrencyListProvider({ children }) {
   const [baseCurrency, setBaseCurrency] = useState("EUR");
   const [quoteCurrency, setQuoteCurrency] = useState("USD");
 
-  const [baseCurrencyValue, setBaseCurrencyValue] = useState(0);
+  const [baseCurrencyValue, setBaseCurrencyValue] = useState();
 
   const [rateObj, setRateObj] = useState({});
 
@@ -23,6 +23,8 @@ function CurrencyListProvider({ children }) {
   const [logs, setLogs] = useState([]);
   const [isCurrPairInFav, setIsCurrPairInFav] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   const convertedRate = +baseCurrencyValue * +rateObj?.rate;
   console.log(rateObj);
   console.log(convertedRate);
@@ -92,14 +94,22 @@ function CurrencyListProvider({ children }) {
 
   useEffect(
     function () {
-      currencyDisplay && getCurrencies(setCurrencies, "currencies");
+      currencyDisplay &&
+        getCurrencies(setCurrencies, "currencies", setIsLoading, setError);
     },
     [currencyDisplay],
   );
 
   useEffect(
-    function name() {
-      getExchangeRate("rate", baseCurrency, quoteCurrency, setRateObj);
+    function () {
+      getExchangeRate(
+        "rate",
+        baseCurrency,
+        quoteCurrency,
+        setRateObj,
+        setIsLoading,
+        setError,
+      );
     },
     [baseCurrency, quoteCurrency],
   );
