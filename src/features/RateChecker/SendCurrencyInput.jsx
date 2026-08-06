@@ -31,9 +31,9 @@ function SendCurrencyInput() {
         <input
           value={baseCurrencyValue}
           onChange={(e) => setBaseCurrencyValue(Number(e.target.value))}
-          type="text"
+          type="number"
           placeholder="0.00"
-          className="w-full text-white font-bold text-[35px] placeholder:text-primary-gray outline-0"
+          className="w-[60%] text-white font-bold text-[35px] placeholder:text-primary-gray outline-0"
         />
         <button
           onClick={() => {
