@@ -1,14 +1,10 @@
 import ArrowDown from "../../assets/icons/icon-chevron-down.svg";
 import SelectCurrency from "./SelectCurrency";
 import { useCurrencyList } from "../../context/CurrencyListContext";
-import { useState } from "react";
 import { currencyToCountry } from "../../data/currencies";
 import ReactCountryFlag from "react-country-flag";
 
 function ReceiveCurrency() {
-  // Created this state to store seleted currency, so flag can be displayed in the btn
-  const [clickedCurr, setClickedCurr] = useState("USD");
-
   const {
     setCurrencyDisplay,
     showCurrencyListReceive,
@@ -19,7 +15,7 @@ function ReceiveCurrency() {
     quoteCurrency,
     convertedRate,
   } = useCurrencyList();
-  console.log(convertedRate);
+
   return (
     <div className="bg-secondary-gray p-3 rounded-2xl border border-light-gray">
       <h2 className="text-primary-gray uppercase text-[17px] font-medium">
@@ -44,7 +40,7 @@ function ReceiveCurrency() {
         >
           <span className="h-fit w-6 inline-block">
             <ReactCountryFlag
-              countryCode={currencyToCountry[clickedCurr]}
+              countryCode={currencyToCountry[quoteCurrency]}
               svg
               style={{
                 width: "20px",
@@ -63,7 +59,6 @@ function ReceiveCurrency() {
           selectCurrency={setQuoteCurrency}
           show={setShowCurrencyListReceive}
           styles={`${showCurrencyListReceive ? "" : "hidden"} -bottom-29 `}
-          setClickedCurr={setClickedCurr}
         />
       </div>
     </div>
