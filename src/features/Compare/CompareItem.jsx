@@ -21,16 +21,10 @@ export default function CompareItem({ rate }) {
   return (
     <div className="p-2.5 pl-3.5 pr-3.5 flex justify-between border border-light-gray rounded-lg bg-secondary-gray mb-3">
       <div className="flex items-center">
-        {/* <img
-          src={flag}
-          alt=""
-          srcset=""
-          className="mr-3 w-6 h-fit rounded-full"
-        /> */}
         <img
           src={getFlagPath(rate[0])}
           alt="British flag"
-          className="mr-3 w-6 h-fit rounded-full"
+          className="mr-3 w-5 rounded-full"
         />
         <span>
           <p className="uppercase text-white text-[14px]">{rate[0]}</p>
