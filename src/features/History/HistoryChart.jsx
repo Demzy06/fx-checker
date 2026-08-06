@@ -2,7 +2,7 @@ import { useCurrencyList } from "../../context/CurrencyListContext";
 import Chart from "./Chart";
 
 function HistoryChart() {
-  const { baseCurrency, quoteCurrency } = useCurrencyList();
+  const { baseCurrency, quoteCurrency, rateObj } = useCurrencyList();
   const date = new Date();
 
   const monthDay = new Intl.DateTimeFormat("en-US", {
@@ -15,7 +15,7 @@ function HistoryChart() {
       <div className="flex justify-between items-center">
         <h1 className="text-white text-[18px]">{`${baseCurrency}/${quoteCurrency}`}</h1>
         <ul className="text-primary-gray flex justify-between text-[14px] h-fit gap-7">
-          <li>0.0673</li>
+          <li>{rateObj?.rate}</li>
           <li className="uppercase list-disc">{monthDay}</li>
         </ul>
       </div>
