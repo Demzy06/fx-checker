@@ -20,3 +20,30 @@ body {
   font-weight: <weight>;
   font-style: normal;
 }
+
+@layer base {
+  li {
+    cursor: pointer;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+@utility no-spinner {
+  appearance: textfield;
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@utility scroll-bar {
+  overflow: scroll;
+  scrollbar-color: #2e2e2e #202022;
+  scrollbar-width: thin;
+  overflow-x: hidden;
+}
