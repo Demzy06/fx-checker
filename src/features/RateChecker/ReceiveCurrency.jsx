@@ -59,7 +59,7 @@ function ReceiveCurrency() {
         <SelectCurrency
           selectCurrency={setQuoteCurrency}
           show={setShowCurrencyListReceive}
-          styles={`${showCurrencyListReceive ? "" : "hidden"} -bottom-29 md:bottom-22 md:left-[65.4%] `}
+          styles={`${showCurrencyListReceive ? "" : "hidden"} mt-85 md:bottom-22 md:left-[65.4%] `}
         />
       </div>
     </div>
