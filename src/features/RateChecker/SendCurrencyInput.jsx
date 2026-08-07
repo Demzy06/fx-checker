@@ -59,7 +59,7 @@ function SendCurrencyInput() {
         <SelectCurrency
           selectCurrency={setBaseCurrency}
           show={setShowCurrencyListSend}
-          styles={`${showCurrencyListSend ? "" : "hidden"} bottom-23 md:bottom-22 md:left-78`}
+          styles={`${showCurrencyListSend ? "" : "hidden"}  mt-[80%] md:bottom-22 md:left-78`}
         />
       </div>
     </div>
