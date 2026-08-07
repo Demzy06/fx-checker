@@ -15,11 +15,11 @@ function ConversionAction() {
   } = useCurrencyList();
 
   return (
-    <div className="border-dashed border-light-gray pt-6 md:flex md:h-fit md:p-0 md:items-center ">
+    <div className="border-dashed border-light-gray pt-1 md:pt-6 md:flex md:h-fit md:p-0 md:items-center ">
       <p className="text-center text-white md:flex-5 md:h-full md:w-fit md:text-start md:text-[14px]">
         1 {baseCurrency} = {rateObj.rate} {quoteCurrency}
       </p>
-      <span className="flex justify-between w-[70%] m-auto mt-3 md:w-fit md:flex-5 md:m-0 md:justify-end">
+      <span className="flex justify-between w-[70%] m-auto mt-3 md:mt-3 md:w-fit md:flex-5 md:m-0 md:justify-end">
         <Button
           text={isCurrPairInFav ? "Favorited" : "Favorite"}
           styles={`uppercase p-1 pr-3 pl-3 ${isCurrPairInFav ? "bg-primary-yellow text-black" : "bg-deep-gray text-white border border-light-gray"}  text-[13px] md:text-[14px] rounded-lg md:mr-2`}
