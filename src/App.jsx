@@ -14,7 +14,7 @@ function App() {
         <div>
           <Header />
           <CurrencyPreview />
-          <main className="pl-4 pr-4">
+          <main className="pl-4 pr-4 md:pr-10 md:pl-10 lg:pl-30 lg:pr-30">
             <RateChecker />
             <TabContextProvider>
               <Tab />

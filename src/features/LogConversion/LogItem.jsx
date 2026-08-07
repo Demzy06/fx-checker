@@ -6,8 +6,8 @@ function LogItem({ logObj }) {
   const { deleteLog } = useCurrencyList();
   return (
     <div className=" bg-secondary-gray border border-light-gray rounded-lg mb-3 flex justify-between items-center p-2.5 pl-3.5 pr-3.5">
-      <h1 className="text-primary-gray text-[14px]">1H</h1>
-      <div>
+      <h1 className="text-primary-gray text-[14px] md:mr-4">1H</h1>
+      <div className="md:mr-auto">
         <span className="flex items-center">
           <h2 className="text-white text-[14px]">{logObj.baseCurrency}</h2>
           <span className="ml-1 mr-1">

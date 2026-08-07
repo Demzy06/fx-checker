@@ -17,19 +17,20 @@ function ReceiveCurrency() {
   } = useCurrencyList();
 
   return (
-    <div className="bg-secondary-gray p-3 rounded-2xl border border-light-gray">
+    <div className="bg-secondary-gray p-3 rounded-2xl border border-light-gray md:p-4 md:w-[45%]">
       <h2 className="text-primary-gray uppercase text-[17px] font-medium">
         Receive
       </h2>
-      <div className="mt-8 flex items-center">
-        {/* Show conversion */}
-        <span className="truncate w-[60%] text-primary-yellow font-bold text-[35px]">
+      {/* Show conversion */}
+      <div className="mt-8 flex items-center ">
+        <span className="truncate w-[60%] md:w-[75%] text-primary-yellow font-bold text-[35px]">
           {!convertedRate
             ? "-"
             : new Intl.NumberFormat("en-US", {
                 currency: "USD",
               }).format(convertedRate.toFixed(2))}
         </span>
+
         <button
           onClick={() => {
             setCurrencyDisplay((displayed) => !displayed);
@@ -58,7 +59,7 @@ function ReceiveCurrency() {
         <SelectCurrency
           selectCurrency={setQuoteCurrency}
           show={setShowCurrencyListReceive}
-          styles={`${showCurrencyListReceive ? "" : "hidden"} -bottom-29 `}
+          styles={`${showCurrencyListReceive ? "" : "hidden"} -bottom-29 md:bottom-22 md:left-[65.4%] `}
         />
       </div>
     </div>

@@ -16,11 +16,11 @@ function History() {
 
   return (
     <section>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3 md:flex md:gap-5">
         <PreviewTab
           text="Open"
           data={open}
-          className="text-white text-[17px]"
+          className="text-white text-[17px] md:w-fit"
         />
         <PreviewTab
           text="Last"
@@ -29,12 +29,13 @@ function History() {
         />
         <PreviewTab
           text="Change"
-          data={change.toFixed(4)}
+          data={!change ? "-" : change.toFixed(4)}
           className={`${percentageRate < 0 ? "text-primary-red" : "text-[#42eb05]"}  text-[17px]`}
         />
         <PreviewTab
           text="% Change"
-          data={`${percentageRate.toFixed(2) > 0 ? "+" : ""}${percentageRate.toFixed(2)}%`}
+          data={`${!percentageRate ? "-" : ` ${percentageRate.toFixed(2) > 0 ? "+" : ""}${percentageRate.toFixed(2)}%`}`}
+          // data={` ${percentageRate.toFixed(2) > 0 ? "+" : ""}${percentageRate.toFixed(2)}%`}
           className={`${percentageRate < 0 ? "text-primary-red" : "text-[#42eb05]"}  text-[17px]`}
           icon={percentageRate < 0 ? ChevronFilledRed : ChevronFilledGreen}
         />

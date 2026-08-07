@@ -18,17 +18,17 @@ function SendCurrencyInput() {
   } = useCurrencyList();
 
   return (
-    <div className="bg-secondary-gray p-3 rounded-2xl border border-light-gray">
+    <div className="bg-secondary-gray p-3 rounded-2xl border border-light-gray md:p-4 md:w-[45%]">
       <h2 className="text-primary-gray uppercase text-[17px] font-medium">
         Send
       </h2>
-      <div className="mt-8 flex items-center">
+      <div className="mt-8 flex items-center ">
         <input
           value={baseCurrencyValue}
-          onChange={(e) => setBaseCurrencyValue(Number(e.target.value))}
-          type="number"
+          onChange={(e) => setBaseCurrencyValue(e.target.value)}
+          type="text"
           placeholder="0.00"
-          className="w-[60%] text-white font-bold text-[35px] placeholder:text-primary-gray outline-0"
+          className="w-[60%] md:w-[75%] text-white font-bold text-[35px] placeholder:text-primary-gray outline-0 "
         />
         <button
           onClick={() => {
@@ -59,7 +59,7 @@ function SendCurrencyInput() {
         <SelectCurrency
           selectCurrency={setBaseCurrency}
           show={setShowCurrencyListSend}
-          styles={`${showCurrencyListSend ? "" : "hidden"} bottom-23`}
+          styles={`${showCurrencyListSend ? "" : "hidden"} bottom-23 md:bottom-22 md:left-78`}
         />
       </div>
     </div>

@@ -4,10 +4,10 @@ import { currencyToCountry } from "../../data/currencies";
 
 function SelectCurrency({ styles, selectCurrency, show }) {
   const { currencies } = useCurrencyList();
-
+  // md:left-[65%]
   return (
     <div
-      className={`bg-secondary-gray p-2 border border-[#585858] rounded-lg hidde absolute left-4  w-[85%] h-70 overflow-y-auto ${styles}`}
+      className={`bg-secondary-gray p-2 border border-[#585858] rounded-lg hidde absolute left-4  w-[85%] h-70 overflow-y-auto ${styles} md:w-[25%] md:h-90 md:scroll-bar md:z-100`}
     >
       <input
         type="text"
