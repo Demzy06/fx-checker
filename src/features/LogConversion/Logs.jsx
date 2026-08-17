@@ -1,9 +1,19 @@
 import Button from "../../components/Button";
 import { useCurrencyList } from "../../context/CurrencyListContext";
 import LogItem from "./LogItem";
+import Message from "../../components/Message";
 
 function Logs() {
   const { logs, clearLogs } = useCurrencyList();
+
+  if (logs.length <= 0) {
+    return (
+      <Message
+        message="No conversions logged yet"
+        messageTwo="Every conversion is recorded here automatically when you tap LOG CONVERSION. Your log is private to this session and this browser."
+      />
+    );
+  }
   return (
     <div className="p-4 bg-deep-gray rounded-lg">
       <div className="flex justify-between items-center">
