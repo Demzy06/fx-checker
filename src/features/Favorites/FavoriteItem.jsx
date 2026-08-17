@@ -18,7 +18,9 @@ function FavoriteItem({ favoriteCurrency }) {
       <div className="flex items-center">
         <span className="mr-3 text-end">
           <p className="text-white text-[14px]">{favoriteCurrency.rate}</p>
-          <p className="text-primary-gray text-[12px]">-0.078%</p>
+          <p className="text-primary-gray text-[12px]">
+            {favoriteCurrency.percentageChange.toFixed(2)}%
+          </p>
         </span>
         <button
           onClick={() => removeFavorite(favoriteCurrency)}
