@@ -6,13 +6,7 @@ import ChevronFilledGreen from "../../assets/icons/chevron-up-filled-green.svg";
 import ChevronFilledRed from "../../assets/icons/chevron-down-filled-red.svg";
 
 function History() {
-  const { currencyPairHistory } = useHistory();
-  const startRate = currencyPairHistory[0];
-  const endRate = currencyPairHistory[currencyPairHistory.length - 1];
-  const open = startRate?.rate;
-  const change = +startRate?.rate - +endRate?.rate;
-  const percentageRate =
-    ((startRate?.rate - endRate?.rate) / endRate?.rate) * 100;
+  const { open, endRate, change, percentageRate } = useHistory();
 
   return (
     <section>
