@@ -1,8 +1,19 @@
 import { useCurrencyList } from "../../context/CurrencyListContext";
 import FavoriteItem from "./FavoriteItem";
+import Message from "../../components/Message";
 
 function Favorites() {
   const { favorites } = useCurrencyList();
+
+  if (favorites.length <= 0) {
+    return (
+      <Message
+        message="No pinned pairs yet"
+        messageTwo="Pin a pair to track its rate here. Tap the star icon on any conversion or comparision row."
+      />
+    );
+  }
+
   return (
     <div className="p-4 bg-deep-gray rounded-lg">
       <div className="flex justify-between items-center">
