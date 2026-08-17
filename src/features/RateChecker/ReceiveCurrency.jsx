@@ -57,6 +57,7 @@ function ReceiveCurrency() {
           </span>
         </button>
         <SelectCurrency
+          localStorageName="quoteCurrency"
           selectCurrency={setQuoteCurrency}
           show={setShowCurrencyListReceive}
           styles={`${showCurrencyListReceive ? "" : "hidden"} mt-85 md:bottom-22 md:left-[65.4%] `}
