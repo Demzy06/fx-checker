@@ -2,9 +2,8 @@ import { useCurrencyList } from "../../context/CurrencyListContext";
 import ReactCountryFlag from "react-country-flag";
 import { currencyToCountry } from "../../data/currencies";
 
-function SelectCurrency({ styles, selectCurrency, show }) {
+function SelectCurrency({ styles, selectCurrency, show, localStorageName }) {
   const { currencies } = useCurrencyList();
-  // md:left-[65%]
   return (
     <div
       className={`bg-secondary-gray p-2 border border-[#585858] rounded-lg hidde absolute left-4  w-[85%] h-70 overflow-y-auto ${styles} md:w-[25%] md:h-90 md:scroll-bar md:z-100`}
@@ -23,7 +22,10 @@ function SelectCurrency({ styles, selectCurrency, show }) {
           {currencies.map((currency) => (
             <li
               onClick={() => {
-                selectCurrency(currency.iso_code);
+                selectCurrency(() => {
+                  localStorage.setItem(localStorageName, currency.iso_code);
+                  return currency.iso_code;
+                });
                 show((displayed) => !displayed);
               }}
               className="pr-1 pl-1 p-2 text-white flex items-center"
