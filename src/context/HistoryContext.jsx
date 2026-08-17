@@ -14,11 +14,18 @@ const dateRangeOption = [
 
 function HistoryContextProvider({ children }) {
   const { baseCurrency, quoteCurrency } = useCurrencyList();
-  const [dateSelected, setDateSelected] = useState(dateRangeOption[0]);
+  const [dateSelected, setDateSelected] = useState(dateRangeOption[2]);
   const [date, setDate] = useState("");
   const [currencyPairHistory, setCurrencyPairHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const startRate = currencyPairHistory[0];
+  const endRate = currencyPairHistory[currencyPairHistory.length - 1];
+  const open = startRate?.rate;
+  const change = +startRate?.rate - +endRate?.rate;
+  const percentageRate =
+    ((startRate?.rate - endRate?.rate) / endRate?.rate) * 100;
 
   useEffect(
     function () {
@@ -31,7 +38,6 @@ function HistoryContextProvider({ children }) {
         const day = date.getDate();
 
         const formattedDate = `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
-        console.log(date);
         setDate(formattedDate);
       }
       getDate();
@@ -65,6 +71,10 @@ function HistoryContextProvider({ children }) {
         currencyPairHistory,
         isLoading,
         error,
+        open,
+        endRate,
+        change,
+        percentageRate,
       }}
     >
       {children}
