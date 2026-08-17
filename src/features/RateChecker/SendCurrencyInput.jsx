@@ -57,6 +57,7 @@ function SendCurrencyInput() {
           </span>
         </button>
         <SelectCurrency
+          localStorageName="baseCurrency"
           selectCurrency={setBaseCurrency}
           show={setShowCurrencyListSend}
           styles={`${showCurrencyListSend ? "" : "hidden"}  mt-[80%] md:bottom-22 md:left-78`}
