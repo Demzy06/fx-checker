@@ -2,6 +2,7 @@
 import { createContext, useContext } from "react";
 import { useEffect, useState } from "react";
 import { getCurrencies, getExchangeRate } from "../api/CurrencyApi";
+import { getDataFromLocalStorge } from "../helper";
 
 const CurrencyListContext = createContext();
 
@@ -11,33 +12,38 @@ function CurrencyListProvider({ children }) {
   const [showCurrencyListReceive, setShowCurrencyListReceive] = useState(false);
   const [showCurrencyListSend, setShowCurrencyListSend] = useState(false);
 
-  const [baseCurrency, setBaseCurrency] = useState("EUR");
-  const [quoteCurrency, setQuoteCurrency] = useState("USD");
+  const [baseCurrency, setBaseCurrency] = useState(
+    () => localStorage.getItem("baseCurrency") || "EUR",
+  );
+  const [quoteCurrency, setQuoteCurrency] = useState(
+    () => localStorage.getItem("quoteCurrency") || "USD",
+  );
 
   const [baseCurrencyValue, setBaseCurrencyValue] = useState();
 
   const [rateObj, setRateObj] = useState({});
 
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(
+    () => getDataFromLocalStorge("favorites") || [],
+  );
 
-  const [logs, setLogs] = useState([]);
+  const [logs, setLogs] = useState(() => getDataFromLocalStorge("logs") || []);
+
   const [isCurrPairInFav, setIsCurrPairInFav] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const convertedRate = +baseCurrencyValue * +rateObj?.rate;
-  console.log(rateObj);
-  console.log(convertedRate);
 
-  function addToFavorites() {
+  function addToFavorites(change) {
     const currencyPairFav = {
       baseCurrency,
       quoteCurrency,
       rate: rateObj.rate,
       id: crypto.randomUUID(),
 
-      // percentageChange,
+      percentageChange: change,
     };
 
     const found = favorites.find(
@@ -52,7 +58,9 @@ function CurrencyListProvider({ children }) {
   }
 
   function addToLogs() {
-    if (baseCurrencyValue <= 0) return;
+    console.log(baseCurrencyValue);
+    if (+baseCurrencyValue <= 0 || baseCurrencyValue === " ") return;
+
     const currLog = {
       baseCurrency,
       quoteCurrency,
@@ -60,6 +68,7 @@ function CurrencyListProvider({ children }) {
       baseCurrencyValue,
       id: crypto.randomUUID(),
     };
+
     setLogs((logs) => [...logs, currLog]);
   }
 
@@ -118,6 +127,20 @@ function CurrencyListProvider({ children }) {
       );
     },
     [baseCurrency, quoteCurrency],
+  );
+
+  useEffect(
+    function () {
+      localStorage.setItem("logs", JSON.stringify(logs));
+    },
+    [logs],
+  );
+
+  useEffect(
+    function () {
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    },
+    [favorites],
   );
 
   return (
