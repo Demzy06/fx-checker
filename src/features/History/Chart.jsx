@@ -18,7 +18,6 @@ function Chart() {
   const history = currencyPairHistory.map((curHistory) => {
     return { date: curHistory.date, rate: curHistory.rate };
   });
-  console.log(history, currencyPairHistory);
 
   if (isLoading) {
     return <LoadingMessage message="Loading history rates..." />;
