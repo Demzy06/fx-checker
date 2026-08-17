@@ -2,6 +2,7 @@ import Button from "./Button";
 import StarIcon from "../assets/icons/icon-star.svg";
 import StarIconFilled from "../assets/icons/icon-star-filledblack.svg";
 import { useCurrencyList } from "../context/CurrencyListContext";
+import { useHistory } from "../context/HistoryContext";
 
 function ConversionAction() {
   const {
@@ -14,6 +15,8 @@ function ConversionAction() {
     baseCurrencyValue,
   } = useCurrencyList();
 
+  const { change } = useHistory();
+
   return (
     <div className="border-dashed border-light-gray pt-1 md:pt-6 md:flex md:h-fit md:p-0 md:items-center ">
       <p className="text-center text-white md:flex-5 md:h-full md:w-fit md:text-start md:text-[14px]">
@@ -24,7 +27,7 @@ function ConversionAction() {
           text={isCurrPairInFav ? "Favorited" : "Favorite"}
           styles={`uppercase p-1 pr-3 pl-3 ${isCurrPairInFav ? "bg-primary-yellow text-black" : "bg-deep-gray text-white border border-light-gray"}  text-[13px] md:text-[14px] rounded-lg md:mr-2`}
           icon={isCurrPairInFav ? StarIconFilled : StarIcon}
-          onClick={addToFavorites}
+          onClick={() => addToFavorites(change)}
         />
         <Button
           text="Log Conversion"
